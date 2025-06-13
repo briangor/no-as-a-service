@@ -21,6 +21,10 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to No-as-a-Service! Use /no to get a random rejection reason.');
+});
+
 // Random rejection reason endpoint
 app.get('/no', (req, res) => {
   const reason = reasons[Math.floor(Math.random() * reasons.length)];
